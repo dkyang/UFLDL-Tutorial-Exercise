@@ -43,11 +43,10 @@ function [cost, grad] = sparseCodingWeightCost(weightMatrix, featureMatrix, visi
 
 % 二范数的平方就是tr(a' * a)!!!
 % 其他部分参考the matrix cookbook
-    cost = trace(T' * T) + ...
-         lambda * sum(sum(sqrt(featureMatrix.^2 + epsilon))) + ...
+    cost = trace(T' * T)./numExamples + ...
          gamma * trace(weightMatrix' * weightMatrix);
 %   the matrix cookbook 公式103、108
-    grad = 2 * T * featureMatrix' + gamma * 2 * weightMatrix;
+    grad = (2*T *featureMatrix')./numExamples + 2*gamma*weightMatrix;
 
     grad = grad(:);
 end
