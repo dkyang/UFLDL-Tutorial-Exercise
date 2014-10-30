@@ -64,8 +64,9 @@ end
 % Specifically, since the output of the network is bounded between [0,1]
 % (due to the sigmoid activation function), we have to make sure 
 % the range of pixel values is also bounded between [0,1]
-patches = normalizeData(patches);
-
+% this should be removed, or the weight matrix is not good enough
+% maybe the patches has already been whitened/normalized
+% patches = normalizeData(patches);
 end
 
 
